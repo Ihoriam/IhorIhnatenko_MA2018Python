@@ -12,23 +12,28 @@ num_guesses = 7
 def input_guess(guess):
     """Compare secret number with users guess"""
     user_guess = int(guess)
-    
-    print ("Guess was: " + str(guess))
+    print ("\nGuess was: " + str(guess))
     if user_guess == secret_number:
         print ("You win!")
+        new_game()
     elif user_guess > secret_number:
+        decrement_guesses()
         print ("Lower!")
-        decrement_guesses()
     elif user_guess < secret_number:
-        print ("Higher!")
         decrement_guesses()
+        print ("Higher!")
     else:
         print ("Ops... Something goes wrong ")
 
 
 def new_game():
     """Start the game"""
-    global secret_number
+    global secret_number, num_guesses
+    # change number of guesses
+    if range_number == 100:
+        num_guesses = 7
+    elif range_number == 1000:
+        num_guesses = 10
     # create random number in range
     secret_number = random.randint(0, range_number)
     print("\nGame started!")
@@ -37,11 +42,10 @@ def new_game():
 
 
 def range100():
-    """Change range of numbers and number of guesses"""
-    global range_number, num_guesses
+    """Change range of numbers"""
+    global range_number
     range_number = 100
-    num_guesses = 7
-    print("Easy mod - on")
+    print("\nEasy mod - on")
     new_game()
 
 
@@ -49,8 +53,7 @@ def range1000():
     """Changes range of numbers and number of guesses"""
     global range_number, num_guesses
     range_number = 1000
-    num_guesses = 10
-    print("Hard mod - on")
+    print("\nHard mod - on")
     new_game()
 
 
