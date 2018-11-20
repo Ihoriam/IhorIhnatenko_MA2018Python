@@ -17,11 +17,11 @@ def input_guess(guess):
         print ("You win!")
         new_game()
     elif user_guess > secret_number:
-        decrement_guesses()
         print ("Lower!")
-    elif user_guess < secret_number:
         decrement_guesses()
+    elif user_guess < secret_number:
         print ("Higher!")
+        decrement_guesses()
     else:
         print ("Ops... Something goes wrong ")
 
