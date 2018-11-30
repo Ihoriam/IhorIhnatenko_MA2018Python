@@ -5,7 +5,7 @@ t = 0
 format_string = "0.00.0"
 success_attempts = 0
 number_attempts = 0
-flag = True
+flag = False
 
 
 def tick():
@@ -48,7 +48,7 @@ def reset_timer():
     number_attempts = 0
     success_attempts = 0
     t = 0
-    flag = True
+    flag = False
 
 
 def format(t):
