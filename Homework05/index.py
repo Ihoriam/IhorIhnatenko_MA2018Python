@@ -37,24 +37,25 @@ def mouseclick(pos):
     global num_list, exposed_list, state, idx_1, idx_2, count
     # game state logic
     idx = int(pos[0]/WIDTH)
-    exposed_list[idx] = True
     if state == 0:
         idx_1 = idx
         state = 1
+        exposed_list[idx] = True
     elif state == 1:
-        idx_2 = idx
-        if idx_1 != idx_2:
+        if exposed_list[idx] == False:
+            idx_2 = idx
             state = 2
             count += 1
+            exposed_list[idx] = True
             label.set_text("Turns = " + str(count))
     elif state == 2:
-        if idx != idx_1 and idx != idx_2:
-            if idx_1 != idx_2:
-                if num_list[idx_1] != num_list[idx_2]:
-                    exposed_list[idx_1] = False
-                    exposed_list[idx_2] = False
+        if exposed_list[idx] == False:
+            if num_list[idx_1] != num_list[idx_2]:
+                exposed_list[idx_1] = False
+                exposed_list[idx_2] = False
             state = 1
             idx_1 = idx
+            exposed_list[idx] = True
     print state
 
 
